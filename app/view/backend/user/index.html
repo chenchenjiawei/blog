@@ -1,0 +1,33 @@
+
+<link href="web/backend/css/admin.css" rel="stylesheet" type="text/css" />
+
+<section class="main"><div id="divMain">
+<div class="divHeader">管理中心</div><div class="SubMenu"></div><div id="divMain2">
+	<h1 style="text-align:center"><a href="?p=backend&c=User&a=add">添加</a></h1>
+	<table border="1" class="tableFull tableBorder tableBorder-thcenter">
+		<tr>
+			<th>序号</th>
+			<th>用户名</th>
+			<th>昵称</th>
+			<th>邮箱</th>
+			<th>密码</th>
+			<th>注册时间</th>
+			<th>操作</th>
+		</tr>
+		<?php foreach($users as $user) { ?>
+		<tr>
+			<td><?php echo $user->id ?></td>
+			<td><?php echo $user->name ?></td>
+			<td><?php echo $user->nickname ?></td>
+			<td><?php echo $user->email ?></td>
+			<td><?php echo $user->password ?></td>
+			<td><?php echo date('Y-m-d H:i:s',$user->register_time) ?></td>
+			<td><a onclick="return confirm('这个数据很重要，你确定要删除吗？')" href="?p=backend&c=User&a=delete&id=<?php echo $user->id ?>">删除</a>
+			<a href="?p=backend&c=User&a=update&id=<?php echo $user->id ?>">修改</a>
+			</td>
+		</tr>
+		<?php } ?>
+	</table>
+</div>
+<script type="text/javascript">ActiveTopMenu("topmenu1");</script><script type="text/javascript">AddHeaderIcon("image/home_32.png");</script></div>
+</section>
